@@ -1,3 +1,21 @@
+<?php
+
+include("DB.php");
+
+if(isset($_POST["username"]) && isset($_POST["password"]))
+{
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $sql = "SELECT * FROM tbl_user WHERE username = '$username' AND password = '$password'";
+    
+    $result = mysql_query($sql) or die(mysql_error());
+    
+    if($row = mysql_fetch_array($result))
+    {
+        echo "Succesfully login as ".$row["username"];   
+    }
+}
+?>
 <html>
 
 <head>
@@ -58,18 +76,17 @@
 </head>
 
 <body>
-    <form id="login">
+    <form id="login" action="" method="post">
         <h1>Log In</h1>
         <fieldset id="inputs">
-            <input id="username" type="text" placeholder="Username" autofocus required>
-            <input id="password" type="password" placeholder="Password" required>
+            <input id="username" name="username" type="text" placeholder="Username" autofocus required>
+            <input id="password" name="password" type="password" placeholder="Password" required>
         </fieldset>
         <fieldset id="actions">
             <input type="submit" id="submit" value="Log in">
-            <a href="">Forgot your password?</a><a href="">Register</a>
+            <a href="reset_password.php">Forgot your password?</a>&nbsp;<a href="register.php">Register</a>
         </fieldset>
     </form>
-
 </body>
 
 </html>

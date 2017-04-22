@@ -31,5 +31,6 @@ if(isset($_POST["username"]) && isset($_POST["password"]))
             Password : <input type="text" name="password" placeholder="Password"> <br>
             <button type="submit">Submit</button><button type="reset">Reset</button>
         </form>
+        <a href="login.php">Click Here to Login..</a>
     </body>
 </html>
